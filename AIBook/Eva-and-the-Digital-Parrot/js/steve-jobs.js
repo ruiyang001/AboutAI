@@ -1,4 +1,5 @@
 /* Steve jobs' book */
+$.ajaxSetup({ cache: false });
 
 function updateDepth(book, newPage) {
 
