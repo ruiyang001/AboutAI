@@ -428,13 +428,18 @@ body, ul, table, form{
 .sj-book .p2,
 .sj-book .p3,
 .sj-book .p4,
-.sj-book .p50,
-.sj-book .p51,
 .sj-book .p52{
 	background-color: var(--paper) !important;
 	background-image: none !important;   /* kill steve-jobs inserts ONLY here */
 	box-shadow: none !important;         /* optional: if you want these totally flat */
 }
+
+.sj-book .p50,
+.sj-book .p51{
+	background-color: var(--paper) !important;
+	background-image: none !important;   /* kill steve-jobs inserts ONLY here */
+}
+
 /* p53: inside back cover image */
 .sj-book .p53{
 	background-color: var(--paper) !important;
