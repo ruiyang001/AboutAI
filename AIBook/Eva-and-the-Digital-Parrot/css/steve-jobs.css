@@ -458,3 +458,45 @@ body, ul, table, form{
 	background: var(--paper) !important;
 	background-image: none !important;
 }
+/* ===== EVA: spine shadow overlay that won't cover your content ===== */
+
+/* 1) Ensure page surfaces can layer correctly */
+.sj-book .page-wrapper{
+	position: relative;
+	overflow: hidden;
+}
+
+/* Put real content above overlays */
+.sj-book .page-wrapper .page,
+.sj-book .book-content{
+	position: relative;
+	z-index: 1;
+	background: transparent !important; /* so paper + shadow can show through */
+}
+
+/* 2) Add spine shadow as a LOW layer (behind content) */
+.sj-book .page-wrapper::after{
+	content: "";
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	z-index: 0; /* critical: behind images/text */
+}
+
+/* Right-hand page: shadow on LEFT edge */
+.sj-book .page-wrapper.odd::after{
+	background: linear-gradient(
+			to right,
+			rgba(0,0,0,0.18) 0%,
+			rgba(0,0,0,0.00) 22%
+	);
+}
+
+/* Left-hand page: shadow on RIGHT edge */
+.sj-book .page-wrapper.even::after{
+	background: linear-gradient(
+			to left,
+			rgba(0,0,0,0.18) 0%,
+			rgba(0,0,0,0.00) 22%
+	);
+}
