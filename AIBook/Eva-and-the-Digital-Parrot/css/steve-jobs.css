@@ -440,14 +440,10 @@ body, ul, table, form{
 	background-image: none !important;   /* kill steve-jobs inserts ONLY here */
 }
 
-/* p53: paper only (image will be inside page53.html) */
 .sj-book .p53{
 	background-color: var(--paper) !important;
-	background-image: none !important;
-}
-.sj-book .p53 .book-content{
-	background: transparent !important;
-	padding: 0 !important;
-	margin: 0 !important;
-	height: 100% !important;
+	background-image: url("/AboutAI/AIBook/Eva-and-the-Digital-Parrot/pics/Page53.jpg?v=1") !important;
+	background-repeat: no-repeat !important;
+	background-position: center center !important;
+	background-size: contain !important;
 }
