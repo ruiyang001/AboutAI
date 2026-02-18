@@ -388,12 +388,12 @@ body, ul, table, form{
 /* B) Spine shadow using inset box-shadow (won't overwrite your page content) */
 /* Left page (even): shadow near RIGHT edge */
 .sj-book .even{
-	box-shadow: inset -18px 0 18px rgba(0,0,0,0.10);
+	box-shadow: inset 18px 0 18px rgba(0,0,0,0.10);
 }
 
 /* Right page (odd): shadow near LEFT edge */
 .sj-book .odd{
-	box-shadow: inset 18px 0 18px rgba(0,0,0,0.10);
+	box-shadow: inset -18px 0 18px rgba(0,0,0,0.10);
 }
 
 /* C) Remove Steve Jobs insert ONLY on your filler pages */
@@ -427,9 +427,9 @@ body, ul, table, form{
 }
 /* If your template uses .page as the visible surface */
 .sj-book .page.odd{
-	box-shadow: inset 18px 0 18px rgba(0,0,0,0.10);
+	box-shadow: inset -18px 0 18px rgba(0,0,0,0.10);
 }
 .sj-book .page.even{
-	box-shadow: inset -18px 0 18px rgba(0,0,0,0.10);
+	box-shadow: inset 18px 0 18px rgba(0,0,0,0.10);
 }
 
