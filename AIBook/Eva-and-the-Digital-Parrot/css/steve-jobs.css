@@ -373,65 +373,88 @@ body, ul, table, form{
 	background-repeat:repeat-y;
 }
 
-/* ===== EVA BOOK: CLEAN OVERRIDES ===== */
-:root { --warm-beige: #F6E8D2; }
+/* =========================================================
+   EVA BOOK: HARD RESET OVERRIDE
+   ========================================================= */
 
+:root { --paper: #F6E8D2; }
+
+/* ---------- 0) Kill the template cover-sheets image everywhere ---------- */
+/* Template often sets p1/p2/p3/... background-image: book-covers.jpg !important */
+.sj-book [class^="p"],
+.sj-book [class*=" p"]{
+	background-image: none !important;
+}
+
+/* ---------- 1) Set beige paper for all non-hard pages (stable, no flicker) ---------- */
+.sj-book .page-wrapper > div:not(.hard){
+	background: var(--paper) !important;
+}
+
+/* Remove template's white gradients on odd/even so they can't fight with beige */
+.sj-book .page-wrapper > div.odd:not(.hard),
+.sj-book .page-wrapper > div.even:not(.hard){
+	background-image: none !important;
+}
+
+/* ---------- 2) Add spine shadow as an overlay (always visible, never overwritten) ---------- */
+.sj-book .page-wrapper > div:not(.hard){
+	position: relative;
+	overflow: hidden;
+}
+
+.sj-book .page-wrapper > div:not(.hard)::before{
+	content: "";
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+}
+
+/* Right page (odd): shadow on LEFT edge near spine */
+.sj-book .page-wrapper > div.odd:not(.hard)::before{
+	background: linear-gradient(to right,
+	rgba(0,0,0,0.14) 0%,
+	rgba(0,0,0,0.00) 18%
+	);
+}
+
+/* Left page (even): shadow on RIGHT edge near spine */
+.sj-book .page-wrapper > div.even:not(.hard)::before{
+	background: linear-gradient(to left,
+	rgba(0,0,0,0.14) 0%,
+	rgba(0,0,0,0.00) 18%
+	);
+}
+
+/* ---------- 3) Covers (FORCE your images back) ---------- */
 /* Front cover: page 1 */
 .sj-book .p1{
+	background-color: var(--paper) !important;
 	background-image: url("/AboutAI/AIBook/Eva-and-the-Digital-Parrot/pics/FrontCover.png") !important;
-	background-size: contain !important;     /* 完整显示，不裁切 */
-	background-position: center top !important;
 	background-repeat: no-repeat !important;
-	background-color: var(--warm-beige) !important; /* 留边用米色 */
-}
-
-/* Inside front cover + filler: page 2 & 3 (beige only) */
-.sj-book .p2,
-.sj-book .p3{
-	background-image: none !important;
-	background: none !important;
-	background-color: var(--warm-beige) !important;
-}
-
-/* Inside back cover: page 53 (beige only) */
-.sj-book .p53{
-	background-image: none !important;
-	background: none !important;
-	background-color: var(--warm-beige) !important;
+	background-position: center top !important;
+	background-size: contain !important; /* show full image */
 }
 
 /* Back cover: page 54 */
 .sj-book .p54{
+	background-color: var(--paper) !important;
 	background-image: url("/AboutAI/AIBook/Eva-and-the-Digital-Parrot/pics/BackCover.png") !important;
+	background-repeat: no-repeat !important;
+	background-position: center center !important;
 	background-size: cover !important;
-	background-position: center !important;
-	background-repeat: no-repeat !important;
-	background-color: var(--warm-beige) !important;
 }
 
-/* Optional: template dummy sheets (leave beige). Remove if you don't want it. */
-.sj-book .own-size,
-.sj-book .own-size.even{
+/* ---------- 4) Special beige-only pages (no template images) ---------- */
+.sj-book .p2,
+.sj-book .p3,
+.sj-book .p53{
+	background: var(--paper) !important;
 	background-image: none !important;
-	background: none !important;
-	background-color: var(--warm-beige) !important;
-}
-/* Right page (odd): shadow on LEFT edge (near spine) */
-.sj-book .page-wrapper > div.odd:not(.hard){
-	background-image:
-			linear-gradient(to right, rgba(0,0,0,0.14) 0%, rgba(0,0,0,0) 18%),
-			linear-gradient(to left, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 10%) !important;
-	background-repeat: no-repeat !important;
-	background-size: 100% 100%, 100% 100% !important;
-	box-shadow: inset 10px 0 18px rgba(0,0,0,0.06) !important;
 }
 
-/* Left page (even): shadow on RIGHT edge (near spine) */
-.sj-book .page-wrapper > div.even:not(.hard){
-	background-image:
-			linear-gradient(to left, rgba(0,0,0,0.14) 0%, rgba(0,0,0,0) 18%),
-			linear-gradient(to right, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 10%) !important;
-	background-repeat: no-repeat !important;
-	background-size: 100% 100%, 100% 100% !important;
-	box-shadow: inset -10px 0 18px rgba(0,0,0,0.06) !important;
+/* OPTIONAL: if you also want p4 to be a plain beige filler */
+.sj-book .p4{
+	background: var(--paper) !important;
+	background-image: none !important;
 }
