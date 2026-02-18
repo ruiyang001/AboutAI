@@ -440,10 +440,12 @@ body, ul, table, form{
 	background-image: none !important;   /* kill steve-jobs inserts ONLY here */
 }
 
+/* p53: inside back cover image */
 .sj-book .p53{
 	background-color: var(--paper) !important;
-	background-image: url("/AboutAI/AIBook/Eva-and-the-Digital-Parrot/pics/Page53.jpeg?v=1") !important;
+	background-image: url("/AboutAI/AIBook/Eva-and-the-Digital-Parrot/pics/Page53.jpeg?v=2") !important;
 	background-repeat: no-repeat !important;
 	background-position: center center !important;
 	background-size: contain !important;
 }
+
