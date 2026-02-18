@@ -430,9 +430,16 @@ body, ul, table, form{
 .sj-book .p4,
 .sj-book .p50,
 .sj-book .p51,
-.sj-book .p52,
-.sj-book .p53{
+.sj-book .p52{
 	background-color: var(--paper) !important;
 	background-image: none !important;   /* kill steve-jobs inserts ONLY here */
 	box-shadow: none !important;         /* optional: if you want these totally flat */
+}
+/* p53: inside back cover image */
+.sj-book .p53{
+	background-color: var(--paper) !important;
+	background-image: url("/AboutAI/AIBook/Eva-and-the-Digital-Parrot/pics/Page53.jpeg") !important;
+	background-repeat: no-repeat !important;
+	background-position: center center !important;
+	background-size: contain !important;   /* 不裁切 */
 }
