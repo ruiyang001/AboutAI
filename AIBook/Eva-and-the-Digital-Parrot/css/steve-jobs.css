@@ -373,3 +373,41 @@ body, ul, table, form{
 	background-repeat:repeat-y;
 }
 
+/* ===== EVA BOOK OVERRIDES (append at END of file) ===== */
+
+:root{
+	--warm-beige: #F6E8D2;
+}
+
+/* Front cover page (p1) */
+.sj-book .p1{
+	background-image: url("/AboutAI/AIBook/Eva-and-the-Digital-Parrot/pics/FrontCover.png") !important;
+	background-size: cover !important;
+	background-position: center !important;
+	background-repeat: no-repeat !important;
+	background-color: var(--warm-beige) !important;
+}
+
+/* Back cover page (p54) */
+.sj-book .p54{
+	background-image: url("/AboutAI/AIBook/Eva-and-the-Digital-Parrot/pics/BackCover.png") !important;
+	background-size: cover !important;
+	background-position: center !important;
+	background-repeat: no-repeat !important;
+	background-color: var(--warm-beige) !important;
+}
+
+/* Inside covers + filler pages: make them warm beige, no image */
+.sj-book .p2,
+.sj-book .p3,
+.sj-book .p53{
+	background-image: none !important;
+	background-color: var(--warm-beige) !important;
+}
+
+/* The template's built-in blank pages (often page 3/4) */
+.sj-book .own-size,
+.sj-book .own-size.even{
+	background-image: none !important;
+	background-color: var(--warm-beige) !important;
+}
