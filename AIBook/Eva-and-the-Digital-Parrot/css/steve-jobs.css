@@ -458,3 +458,41 @@ body, ul, table, form{
 	background: var(--paper) !important;
 	background-image: none !important;
 }
+/* ===== Spine shadow overlay (robust for Turn.js templates) ===== */
+
+/* Make sure the visible page element can host an overlay */
+.sj-book .page-wrapper,
+.sj-book .page-wrapper .page{
+	position: relative !important;
+	overflow: hidden !important;
+}
+
+/* Create the overlay layer */
+.sj-book .page-wrapper::before,
+.sj-book .page-wrapper .page::before{
+	content: "";
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	z-index: 5;                /* must sit above page background */
+}
+
+/* Right-hand page (odd): shadow on LEFT edge near spine */
+.sj-book .page-wrapper.odd::before,
+.sj-book .page-wrapper.odd .page::before{
+	background: linear-gradient(
+			to right,
+			rgba(0,0,0,0.18) 0%,
+			rgba(0,0,0,0.00) 22%
+	);
+}
+
+/* Left-hand page (even): shadow on RIGHT edge near spine */
+.sj-book .page-wrapper.even::before,
+.sj-book .page-wrapper.even .page::before{
+	background: linear-gradient(
+			to left,
+			rgba(0,0,0,0.18) 0%,
+			rgba(0,0,0,0.00) 22%
+	);
+}
