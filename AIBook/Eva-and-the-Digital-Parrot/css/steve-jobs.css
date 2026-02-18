@@ -409,29 +409,28 @@ body, ul, table, form{
 	background-color: var(--warm-beige) !important;
 }
 
-/* ===== GLOBAL RESET: make all non-special pages white again ===== */
+/* ===== Beige paper + spine shadow (restore book-page shading) ===== */
+:root { --paper: #F6E8D2; }
 
-/* 1) Force all normal pages back to white */
-.sj-book .page-wrapper > div:not(.p1):not(.p2):not(.p3):not(.p53):not(.p54){
-	background-color: #ffffff !important;
+/* Apply beige to all normal pages (not hard covers) */
+.sj-book .page-wrapper > div:not(.hard){
+	background-color: var(--paper) !important;
 }
 
-/* 2) If any "own-size" placeholders were tinted, reset them */
-.sj-book .own-size,
-.sj-book .own-size.even{
-	background-color: #ffffff !important;
-	background-image: none !important;
+/* Right page (odd): shadow on LEFT edge (near spine) */
+.sj-book .page-wrapper > div.odd:not(.hard){
+	background-image:
+			linear-gradient(to right, rgba(0,0,0,0.14) 0%, rgba(0,0,0,0) 18%),
+			linear-gradient(to left, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 10%) !important;
+	background-repeat: no-repeat !important;
+	background-size: 100% 100%, 100% 100% !important;
 }
 
-/* 3) Keep your beige pages (only these) */
-:root { --warm-beige: #F6E8D2; }
-
-.sj-book .p2,
-.sj-book .p3,
-.sj-book .p53{
-	background: none !important;
-	background-image: none !important;
-	background-color: var(--warm-beige) !important;
+/* Left page (even): shadow on RIGHT edge (near spine) */
+.sj-book .page-wrapper > div.even:not(.hard){
+	background-image:
+			linear-gradient(to left, rgba(0,0,0,0.14) 0%, rgba(0,0,0,0) 18%),
+			linear-gradient(to right, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 10%) !important;
+	background-repeat: no-repeat !important;
+	background-size: 100% 100%, 100% 100% !important;
 }
-
-
