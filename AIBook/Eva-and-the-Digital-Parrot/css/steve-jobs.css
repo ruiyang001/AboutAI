@@ -379,14 +379,15 @@ body, ul, table, form{
 	--warm-beige: #F6E8D2;
 }
 
-/* Front cover page (p1) */
+/* Front cover (p1) - show full image, no crop */
 .sj-book .p1{
 	background-image: url("/AboutAI/AIBook/Eva-and-the-Digital-Parrot/pics/FrontCover.png") !important;
-	background-size: cover !important;
-	background-position: center !important;
+	background-size: contain !important;          /* 关键：contain 不裁切 */
+	background-position: center top !important;   /* 让顶部对齐更舒服 */
 	background-repeat: no-repeat !important;
-	background-color: var(--warm-beige) !important;
+	background-color: #F6E8D2 !important;         /* 你要的米色留边 */
 }
+
 
 /* Back cover page (p54) */
 .sj-book .p54{
