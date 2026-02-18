@@ -432,4 +432,20 @@ body, ul, table, form{
 .sj-book .page.even{
 	box-shadow: inset 18px 0 18px rgba(0,0,0,0.10);
 }
+/* F) Force beige paper on ALL normal pages by killing template gradients */
+:root { --paper: #F6E8D2; }
+
+/* These are the actual visible sheet surfaces in this template */
+.sj-book .page-wrapper > div.odd:not(.hard),
+.sj-book .page-wrapper > div.even:not(.hard),
+.sj-book .page.odd,
+.sj-book .page.even{
+	background: var(--paper) !important;
+	background-image: none !important;   /* kill the template white gradient */
+}
+
+/* Keep your content from painting its own white block */
+.sj-book .book-content{
+	background: transparent !important;
+}
 
