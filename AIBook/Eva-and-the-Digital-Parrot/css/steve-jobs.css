@@ -373,29 +373,30 @@ body, ul, table, form{
 	background-repeat:repeat-y;
 }
 
-/* ==============================
-   EVA BOOK FINAL OVERRIDE
-   ============================== */
+/* =========================
+   EVA BOOK FINAL (SAFE)
+   ========================= */
 
 :root { --paper: #F6E8D2; }
 
-/* 1) Beige paper + spine shading (safe: doesn't touch your page content) */
-.sj-book .odd{
-	background-color: var(--paper) !important;
-	background-image:
-			linear-gradient(to left, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0) 16%) !important;
-	background-repeat: no-repeat !important;
-}
-
+/* A) Beige paper for normal pages (safe: color only) */
+.sj-book .odd,
 .sj-book .even{
 	background-color: var(--paper) !important;
-	background-image:
-			linear-gradient(to right, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0) 16%) !important;
-	background-repeat: no-repeat !important;
 }
 
-/* 2) Kill the Steve Jobs insert ONLY on your filler pages (p2/p3/p53)
-   (do NOT try to kill all p* globally) */
+/* B) Spine shadow using inset box-shadow (won't overwrite your page content) */
+/* Left page (even): shadow near RIGHT edge */
+.sj-book .even{
+	box-shadow: inset -18px 0 18px rgba(0,0,0,0.10);
+}
+
+/* Right page (odd): shadow near LEFT edge */
+.sj-book .odd{
+	box-shadow: inset 18px 0 18px rgba(0,0,0,0.10);
+}
+
+/* C) Remove Steve Jobs insert ONLY on your filler pages */
 .sj-book .p2,
 .sj-book .p3,
 .sj-book .p53{
@@ -403,7 +404,7 @@ body, ul, table, form{
 	background-color: var(--paper) !important;
 }
 
-/* 3) Front cover (p1) */
+/* D) Covers (keep your images) */
 .sj-book .p1{
 	background-color: var(--paper) !important;
 	background-image: url("/AboutAI/AIBook/Eva-and-the-Digital-Parrot/pics/FrontCover.png") !important;
@@ -412,7 +413,6 @@ body, ul, table, form{
 	background-size: contain !important;
 }
 
-/* 4) Back cover (p54) */
 .sj-book .p54{
 	background-color: var(--paper) !important;
 	background-image: url("/AboutAI/AIBook/Eva-and-the-Digital-Parrot/pics/BackCover.png") !important;
@@ -421,7 +421,15 @@ body, ul, table, form{
 	background-size: cover !important;
 }
 
-/* 5) Make sure your actual page HTML (images/text) stays visible */
+/* E) Make sure text pages don't paint an opaque block */
 .sj-book .book-content{
 	background: transparent !important;
 }
+/* If your template uses .page as the visible surface */
+.sj-book .page.odd{
+	box-shadow: inset 18px 0 18px rgba(0,0,0,0.10);
+}
+.sj-book .page.even{
+	box-shadow: inset -18px 0 18px rgba(0,0,0,0.10);
+}
+
