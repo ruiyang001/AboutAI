@@ -440,17 +440,11 @@ body, ul, table, form{
 	background-image: none !important;   /* kill steve-jobs inserts ONLY here */
 }
 
-/* p53: inside back cover image */
-.sj-book .p53{
-	background-image: url("...Page53.jpeg") !important;
-	...
-}
-/* p53: keep paper only; the real image is in page53.html */
+/* p53: paper only (image will be inside page53.html) */
 .sj-book .p53{
 	background-color: var(--paper) !important;
 	background-image: none !important;
 }
-/* p53: ensure inner content doesn't paint a beige rectangle */
 .sj-book .p53 .book-content{
 	background: transparent !important;
 	padding: 0 !important;
