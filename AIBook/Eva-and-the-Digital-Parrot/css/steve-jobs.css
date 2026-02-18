@@ -432,20 +432,55 @@ body, ul, table, form{
 .sj-book .page.even{
 	box-shadow: inset 18px 0 18px rgba(0,0,0,0.10);
 }
-/* F) Force beige paper on ALL normal pages by killing template gradients */
+/* ================================
+   EVA BOOK: PAPER + SPINE SHADOW (SAFE)
+   ================================ */
+
 :root { --paper: #F6E8D2; }
 
-/* These are the actual visible sheet surfaces in this template */
+/* A) All normal inner pages: beige paper (DO NOT nuke background-image) */
 .sj-book .page-wrapper > div.odd:not(.hard),
-.sj-book .page-wrapper > div.even:not(.hard),
-.sj-book .page.odd,
-.sj-book .page.even{
-	background: var(--paper) !important;
-	background-image: none !important;   /* kill the template white gradient */
+.sj-book .page-wrapper > div.even:not(.hard){
+	background-color: var(--paper) !important;
 }
 
-/* Keep your content from painting its own white block */
+/* B) Spine shadow (correct side): use inset shadow, doesn't touch background-image */
+.sj-book .page-wrapper > div.even:not(.hard){
+	/* left page: spine is on the RIGHT edge */
+	box-shadow: inset -18px 0 18px rgba(0,0,0,0.10);
+}
+
+.sj-book .page-wrapper > div.odd:not(.hard){
+	/* right page: spine is on the LEFT edge */
+	box-shadow: inset 18px 0 18px rgba(0,0,0,0.10);
+}
+
+/* C) Your beige-only filler pages (kill template images only on these pages) */
+.sj-book .p2,
+.sj-book .p3,
+.sj-book .p53{
+	background-image: none !important;
+	background-color: var(--paper) !important;
+}
+
+/* D) Covers: force your cover images back */
+.sj-book .p1{
+	background-color: var(--paper) !important;
+	background-image: url("/AboutAI/AIBook/Eva-and-the-Digital-Parrot/pics/FrontCover.png") !important;
+	background-repeat: no-repeat !important;
+	background-position: center top !important;
+	background-size: contain !important;
+}
+
+.sj-book .p54{
+	background-color: var(--paper) !important;
+	background-image: url("/AboutAI/AIBook/Eva-and-the-Digital-Parrot/pics/BackCover.png") !important;
+	background-repeat: no-repeat !important;
+	background-position: center center !important;
+	background-size: cover !important;
+}
+
+/* E) Don't let text blocks paint white rectangles */
 .sj-book .book-content{
 	background: transparent !important;
 }
-
