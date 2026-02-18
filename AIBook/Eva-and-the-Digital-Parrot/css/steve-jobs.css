@@ -373,59 +373,47 @@ body, ul, table, form{
 	background-repeat:repeat-y;
 }
 
-/* ===== EVA BOOK OVERRIDES ===== */
+/* ===== EVA BOOK: beige paper + stable spine shadow (no flicker) ===== */
 :root { --paper: #F6E8D2; }
 
-/* Front cover: page 1 */
-.sj-book .p1{
-	background-image: url("/AboutAI/AIBook/Eva-and-the-Digital-Parrot/pics/FrontCover.png") !important;
-	background-size: contain !important;     /* 完整显示，不裁切 */
-	background-position: center top !important;
-	background-repeat: no-repeat !important;
-	background-color: var(--paper) !important; /* 留白用米色 */
-}
-
-/* Inside front cover + filler: page 2 & 3 (beige only, KEEP gradients) */
-.sj-book .p2,
-.sj-book .p3{
-	background-color: var(--paper) !important;
-}
-
-/* Inside back cover: page 53 (beige only, KEEP gradients) */
-.sj-book .p53{
-	background-color: var(--paper) !important;
-}
-
-/* Back cover: page 54 */
-.sj-book .p54{
-	background-image: url("/AboutAI/AIBook/Eva-and-the-Digital-Parrot/pics/BackCover.png") !important;
-	background-size: cover !important;
-	background-position: center !important;
-	background-repeat: no-repeat !important;
-	background-color: var(--paper) !important;
-}
-
-/* ===== Beige paper + spine shadow (restore book-page shading) ===== */
-
-/* Apply beige to all normal pages (not hard covers) */
+/* 1) Make all normal pages beige (keep covers separate) */
 .sj-book .page-wrapper > div:not(.hard){
 	background-color: var(--paper) !important;
+	background-image: none !important;     /* kill template white gradients */
 }
 
-/* Right page (odd): shadow on LEFT edge (near spine) */
-.sj-book .page-wrapper > div.odd:not(.hard){
-	background-image:
-			linear-gradient(to right, rgba(0,0,0,0.14) 0%, rgba(0,0,0,0) 18%),
-			linear-gradient(to left, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 10%) !important;
-	background-repeat: no-repeat !important;
-	background-size: 100% 100%, 100% 100% !important;
+/* 2) Kill Steve-Jobs cover sheet image on p2/p3 (and any other filler you want) */
+.sj-book .p2,
+.sj-book .p3,
+.sj-book .p53{
+	background-image: none !important;
 }
 
-/* Left page (even): shadow on RIGHT edge (near spine) */
-.sj-book .page-wrapper > div.even:not(.hard){
-	background-image:
-			linear-gradient(to left, rgba(0,0,0,0.14) 0%, rgba(0,0,0,0) 18%),
-			linear-gradient(to right, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 10%) !important;
-	background-repeat: no-repeat !important;
-	background-size: 100% 100%, 100% 100% !important;
+/* 3) Add spine shadow as an overlay (so it can’t be overwritten by background-image) */
+.sj-book .page-wrapper > div:not(.hard){
+	position: relative;
+	overflow: hidden;
+}
+
+.sj-book .page-wrapper > div:not(.hard)::before{
+	content: "";
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+}
+
+/* right page (odd): shadow on left edge */
+.sj-book .page-wrapper > div.odd:not(.hard)::before{
+	background: linear-gradient(to right,
+	rgba(0,0,0,0.14) 0%,
+	rgba(0,0,0,0.00) 18%
+	);
+}
+
+/* left page (even): shadow on right edge */
+.sj-book .page-wrapper > div.even:not(.hard)::before{
+	background: linear-gradient(to left,
+	rgba(0,0,0,0.14) 0%,
+	rgba(0,0,0,0.00) 18%
+	);
 }
