@@ -442,9 +442,18 @@ body, ul, table, form{
 
 /* p53: inside back cover image */
 .sj-book .p53{
+	background-image: url("...Page53.jpeg") !important;
+	...
+}
+/* p53: keep paper only; the real image is in page53.html */
+.sj-book .p53{
 	background-color: var(--paper) !important;
-	background-image: url("/AboutAI/AIBook/Eva-and-the-Digital-Parrot/pics/Page53.jpeg") !important;
-	background-repeat: no-repeat !important;
-	background-position: center center !important;
-	background-size: contain !important;   /* 不裁切 */
+	background-image: none !important;
+}
+/* p53: ensure inner content doesn't paint a beige rectangle */
+.sj-book .p53 .book-content{
+	background: transparent !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	height: 100% !important;
 }
