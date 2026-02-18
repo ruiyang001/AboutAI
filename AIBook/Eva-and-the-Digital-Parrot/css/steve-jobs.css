@@ -409,10 +409,17 @@ body, ul, table, form{
 	background-color: var(--warm-beige) !important;
 }
 
-/* Optional: template dummy sheets (leave beige). Remove if you don't want it. */
-.sj-book .own-size,
-.sj-book .own-size.even{
+/* Restore normal paper look for the base sheet */
+.sj-book .own-size{
+	background-color: #ffffff !important;
 	background-image: none !important;
-	background: none !important;
-	background-color: var(--warm-beige) !important;
 }
+
+.sj-book .own-size.even{
+	background-image: -webkit-linear-gradient(left, #fff 95%, #dadada 100%) !important;
+	background-image: -moz-linear-gradient(left, #fff 95%, #dadada 100%) !important;
+	background-image: -ms-linear-gradient(left, #fff 95%, #dadada 100%) !important;
+	background-image: -o-linear-gradient(left, #fff 95%, #dadada 100%) !important;
+	background-image: linear-gradient(left, #fff 95%, #dadada 100%) !important;
+}
+
