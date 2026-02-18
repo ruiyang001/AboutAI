@@ -496,3 +496,8 @@ body, ul, table, form{
 			rgba(0,0,0,0.00) 22%
 	);
 }
+.sj-book .book-content{
+	background: transparent !important;
+	position: relative;
+	z-index: 1;
+}
