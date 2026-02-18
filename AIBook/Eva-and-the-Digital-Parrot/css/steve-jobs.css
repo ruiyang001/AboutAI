@@ -409,17 +409,29 @@ body, ul, table, form{
 	background-color: var(--warm-beige) !important;
 }
 
-/* Restore normal paper look for the base sheet */
-.sj-book .own-size{
+/* ===== GLOBAL RESET: make all non-special pages white again ===== */
+
+/* 1) Force all normal pages back to white */
+.sj-book .page-wrapper > div:not(.p1):not(.p2):not(.p3):not(.p53):not(.p54){
+	background-color: #ffffff !important;
+}
+
+/* 2) If any "own-size" placeholders were tinted, reset them */
+.sj-book .own-size,
+.sj-book .own-size.even{
 	background-color: #ffffff !important;
 	background-image: none !important;
 }
 
-.sj-book .own-size.even{
-	background-image: -webkit-linear-gradient(left, #fff 95%, #dadada 100%) !important;
-	background-image: -moz-linear-gradient(left, #fff 95%, #dadada 100%) !important;
-	background-image: -ms-linear-gradient(left, #fff 95%, #dadada 100%) !important;
-	background-image: -o-linear-gradient(left, #fff 95%, #dadada 100%) !important;
-	background-image: linear-gradient(left, #fff 95%, #dadada 100%) !important;
+/* 3) Keep your beige pages (only these) */
+:root { --warm-beige: #F6E8D2; }
+
+.sj-book .p2,
+.sj-book .p3,
+.sj-book .p53{
+	background: none !important;
+	background-image: none !important;
+	background-color: var(--warm-beige) !important;
 }
+
 
