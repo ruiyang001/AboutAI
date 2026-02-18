@@ -373,8 +373,8 @@ body, ul, table, form{
 	background-repeat:repeat-y;
 }
 
-/* ===== EVA BOOK: CLEAN OVERRIDES ===== */
-:root { --warm-beige: #F6E8D2; }
+/* ===== EVA BOOK OVERRIDES ===== */
+:root { --paper: #F6E8D2; }
 
 /* Front cover: page 1 */
 .sj-book .p1{
@@ -382,22 +382,18 @@ body, ul, table, form{
 	background-size: contain !important;     /* 完整显示，不裁切 */
 	background-position: center top !important;
 	background-repeat: no-repeat !important;
-	background-color: var(--warm-beige) !important; /* 留边用米色 */
+	background-color: var(--paper) !important; /* 留白用米色 */
 }
 
-/* Inside front cover + filler: page 2 & 3 (beige only) */
+/* Inside front cover + filler: page 2 & 3 (beige only, KEEP gradients) */
 .sj-book .p2,
 .sj-book .p3{
-	background-image: none !important;
-	background: none !important;
-	background-color: var(--warm-beige) !important;
+	background-color: var(--paper) !important;
 }
 
-/* Inside back cover: page 53 (beige only) */
+/* Inside back cover: page 53 (beige only, KEEP gradients) */
 .sj-book .p53{
-	background-image: none !important;
-	background: none !important;
-	background-color: var(--warm-beige) !important;
+	background-color: var(--paper) !important;
 }
 
 /* Back cover: page 54 */
@@ -406,11 +402,10 @@ body, ul, table, form{
 	background-size: cover !important;
 	background-position: center !important;
 	background-repeat: no-repeat !important;
-	background-color: var(--warm-beige) !important;
+	background-color: var(--paper) !important;
 }
 
 /* ===== Beige paper + spine shadow (restore book-page shading) ===== */
-:root { --paper: #F6E8D2; }
 
 /* Apply beige to all normal pages (not hard covers) */
 .sj-book .page-wrapper > div:not(.hard){
